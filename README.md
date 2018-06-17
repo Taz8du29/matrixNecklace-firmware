@@ -3,94 +3,77 @@
 
 Index
 -----
+
 * [Introduction](#introduction)
-* [Project's Description](#projects-description)
-* [Folders](#folders)
-* [Known Issues](#known-issues)
+* [Building and uploading](#building-and-uploading)
+* [Planned features](#planned-features)
 * [To Do](#to-do)
+* [Datasheets](#datasheets)
 
 
 Introduction
 ------------
-This project is a simple customizable necklace, based on an ~~AtTiny2313a~~ AtTiny48/88 and a 8x8 dot LED matrix.
 
-The very first idea came from furrtek's mind, called **jewelmatrix**. You can find his project on [his website](http://furrtek.free.fr/?a=jewelmatrix) (french).
+matrixNecklace is a simple, customizable necklace, based on an AtTiny2313a and a 8x8 dot LED matrix.
+
+The very first idea came from [furrtek][0]'s mind, called **jewelmatrix**. You can find his project on [his website][1](french).
 
 I wanted to improve the thing and add a few options, like a rechargeable Li-Ion battery (instead of the coin cell furrtek used) and a cross-platform tool to add custom patterns on the fly, without the need to rebuild and flash the attiny every time.
 
-To be implemented features :
-* Fully customizable patterns
-* Rechargeable by USB
 
-Planned features :
-* Easy on-the-fly programmation by any device running **\*nix**, **windows**, **MacOS** or **android** operating system, using the device's screen as the transmission support
-* USB connection to host device (faster than screen transmision)
+Building and uploading
+----------------------
 
-
-Project's Description
--------------------
-* matrixEditor
-    - matrixEditor is the UI for matrixNecklace's patterns creation.
-    - Based on the FLTK graphic library.
-    - Still at experimental level.
+In order to build the firmware, make sure that your programmer is connected to the chip following the [datasheet](#datasheets). You may edit the following line of the makefile if you don't use an [`usbasp`][2] programmer:
+``` makefile
+# Programming hardware
+AVRDUDE_PROGRAMMER = usbasp
+```
 
 
-* matrixNecklace
-    - AtTiny48/88 ~~AtTiny2313a~~ 8-bits microcontroller
-    - 8x8 dot LED matrix
-    - Li-Ion battery, which can be recharged via micro USB type B
+Then, run the following commands in a linux shell:
+```
+make
+make upload
+```
+
+That's it!
 
 
-Folders
--------
-* **doc/**
-    - Datasheets
-* **editor/**
-    - C++ Cross-platform editor source code
-    - Compile script and instructions
-* **firmware/**
-    - AVR hardware source code
-    - Compile script and instructions
-    - Basic patterns (for reference)
-    - Arduino sketch used to determinate matrix' pinout
-* **hardware/**
-    - **schematic/**
-        - KiCad schematic files (not released yet)
-* **licenses/**
-    - Project's license file(s)
-    - Every libraries used's specific license file(s)
+Planned features
+----------------
 
-
-Known Issues
-------------
-* 50/60 Hz differences may cause problems for screen transmission upload
+* AtTiny48/88 version
+* USB flash/upload-(With custom bootloader)
 
 
 To Do
 -----
-* Documentation
-    - Sphinx documentation
-    - Compiling HowTo
+
+* Correct pinout/registers match
 
 
-* Editor
-    - Patterns import/export
-    - Patterns ordering and timings
-    - Integrated compiler (and it's output)
-    - Device uploader
+Datasheets
+----------
+
+Here are the direct link to the datasheets (.pdf) for the various AVR chips that can be used in this project.
+
+* ATtiny2313: [microchip website][10] ([mirror][11])
+* ATtiny2313a/4313: [microchip website][12] ([mirror][13])
 
 
-* Firmware
-    - Correct pinout/registers match
-    - Update for AtTiny48/88
-    - Create custom bootloader
-    - Add USB support
+NB1: The ATtinys 2313, 2313a and 4313 have the same pinout and can be substituted to each other.
+
+NB2: The proposed mirror is on my personnal website.
 
 
-* Hardware
-    - Finish pinout
-    - Finish chips libraries
-    - Release schematics
-    - Create BOM
-    - Still AtTiny2313a version ?
-    - Mini USB type B version ?
+
+  [0]: https://github.com/furrtek/
+  [1]: http://furrtek.free.fr/?a=jewelmatrix
+  [2]: http://www.fischl.de/usbasp/
+
+  [10]: http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2543-AVR-ATtiny2313_Datasheet.pdf
+  [11]: https://taz8du29.fr/matrixNecklace/Atmel-2543-AVR-ATtiny2313_Datasheet.pdf
+
+  [12]: http://ww1.microchip.com/downloads/en/DeviceDoc/doc8246.pdf
+  [13]: https://taz8du29.fr/matrixNecklace/ATtiny2313A_4313.pdf
