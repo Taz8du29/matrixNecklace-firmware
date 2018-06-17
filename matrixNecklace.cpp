@@ -1,7 +1,7 @@
 /* matrixNecklace.cpp
- * 
+ *
  * Main program file
- * 
+ *
  * Copyright 2015 - 2017 (C) Taz8du29
  * Refer to LICENSE.MD for more infos about copyright
 */
@@ -122,14 +122,14 @@ int main(void) {
 		serOut_P(writingP);
 		serOut("Battery\n\r");
 		for(int x = 0; x < 15; x++) {
-			writePattern(bat_0, speed1);          
+			writePattern(bat_00, speed1);
 			writePattern(bat_20, speed1);
 			writePattern(bat_40, speed1);
 			writePattern(bat_60, speed1);
 			writePattern(bat_80, speed1);
 			writePattern(bat_100, speed1);
 		}
-		
+
 		// Space Invaders 1 animation
 		serOut_P(writingP);
 		serOut("Space Invaders 1\n\r");
@@ -137,7 +137,7 @@ int main(void) {
 			writePattern(SI1_On, speed2);
 			writePattern(SI1_Off, speed2);
 		}
-		
+
 		// Space Invaders 2 animation
 		serOut_P(writingP);
 		serOut("Space Invaders 2\n\r");
@@ -163,7 +163,7 @@ int main(void) {
 		serOut_P(writingP);
 		serOut("A clock");
 		for(int x = 0; x < 10; x++) {
-			writePattern(timed, speed2);
+			writePattern(clock, speed2);
 		}
 		*/
 	}
