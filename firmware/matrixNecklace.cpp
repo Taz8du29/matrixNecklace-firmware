@@ -39,8 +39,8 @@
 #define speed2 1000
 
 // Main definition of pins used
-short rows[8][2] = {{PORTB,0}, {PORTB,5}, {PORTD,5}, {PORTD,0}, {PORTD,4}, {PORTD,1}, {PORTD,2}, {PORTB,4}};
-short cols[8][2] = {{PORTA,1}, {PORTA,0}, {PORTB,1}, {PORTD,3}, {PORTB,2}, {PORTB,6}, {PORTB,7}, {PORTD,5}};
+uint8_t rows[8][2] = {{PORTB,0}, {PORTB,5}, {PORTD,5}, {PORTD,0}, {PORTD,4}, {PORTD,1}, {PORTD,2}, {PORTB,4}};
+uint8_t cols[8][2] = {{PORTA,1}, {PORTA,0}, {PORTB,1}, {PORTD,3}, {PORTB,2}, {PORTB,6}, {PORTB,7}, {PORTD,5}};
 
 // Serial strings
 PROGMEM const uint8_t initDone[] = "Initialisation done.\n\r";
@@ -55,7 +55,6 @@ PROGMEM const uint8_t writingP[] = "writing pattern : ";
 // MySerial initialisation
 // extern "C" void SendByte(uint8_t) {}
 void serOut(const uint8_t* str) {while (*str) SendByte(*str++);}
-
 void serOut_P(const uint8_t* str) {while (pgm_read_byte(*str)) SendByte(pgm_read_byte(*str++));}
 
 // BasicSerial main function implementation
@@ -119,7 +118,6 @@ uint8_t main(void) {
 
 		// Battery animation
 		serOut_P(writingP);
-		serOut("Battery\n\r");
 		for(uint8_t x = 0; x < 15; x++) {
 			writePattern(bat_00, speed1);
 			writePattern(bat_20, speed1);
@@ -131,7 +129,6 @@ uint8_t main(void) {
 
 		// Space Invaders 1 animation
 		serOut_P(writingP);
-		serOut("Space Invaders 1\n\r");
 		for(uint8_t x = 0; x < 20; x++) {
 			writePattern(SI1_On, speed2);
 			writePattern(SI1_Off, speed2);
@@ -139,7 +136,6 @@ uint8_t main(void) {
 
 		// Space Invaders 2 animation
 		serOut_P(writingP);
-		serOut("Space Invaders 2\n\r");
 		for(uint8_t x = 0; x < 20; x++) {
 			writePattern(SI2_On, speed2);
 			writePattern(SI2_Off, speed2);
@@ -148,19 +144,16 @@ uint8_t main(void) {
 		// Other stuff
 		/*
 		serOut_P(writingP);
-		serOut("A small heart\n\r");
 		for(uint8_t x = 0; x < 10; x++) {
 			writePattern(heart, speed2);
 		}
 
 		serOut_P(writingP);
-		serOut("A smiley");
 		for(uint8_t x = 0; x < 10; x++) {
 			writePattern(smile, speed2);
 		}
 
 		serOut_P(writingP);
-		serOut("A clock");
 		for(uint8_t x = 0; x < 10; x++) {
 			writePattern(clock, speed2);
 		}
