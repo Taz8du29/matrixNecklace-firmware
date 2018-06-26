@@ -1,0 +1,9 @@
+# Github
+.git/
+
+# Compilation stuff
+.gcc-flags.json
+.dep/
+.obj/
+.out/
+*.map
