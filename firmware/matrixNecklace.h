@@ -37,11 +37,6 @@
 uint8_t rows[8][2] = {{PORTB,0}, {PORTB,5}, {PORTD,5}, {PORTD,0}, {PORTD,4}, {PORTD,1}, {PORTD,2}, {PORTB,4}};
 uint8_t cols[8][2] = {{PORTA,1}, {PORTA,0}, {PORTB,1}, {PORTD,3}, {PORTB,2}, {PORTB,6}, {PORTB,7}, {PORTD,5}};
 
-// Serial strings
-PROGMEM const uint8_t initDone[] = "Initialisation done.\n\r";
-PROGMEM const uint8_t scrFilld[] = "Screen filled !\n\r";
-PROGMEM const uint8_t scrClear[] = "Screen cleared !\n\r";
-PROGMEM const uint8_t writingP[] = "writing pattern : ";
 
 
 

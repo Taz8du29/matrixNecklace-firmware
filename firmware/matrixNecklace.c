@@ -20,10 +20,6 @@
 
 /* MAIN FUNCTION DEFINITIONS */
 
-// BasicSerial main function implementation
-// void serOut(const uint8_t* str) { while (*str) TxByte(*str++); }
-// void serOut_P(const uint8_t* str) { while (pgm_read_byte(*str)) TxByte(pgm_read_byte(*str++)); }
-
 // Light all the matrix's LEDs
 void fillScreen(void) {
 	for(uint8_t i = 0; i < 8; i++) {
@@ -40,7 +36,6 @@ void clearScreen(void) {
 		cbi(rows[i][0], rows[i][1]);
 		sbi(cols[i][0], cols[i][1]);
 	}
-	serOut_P(scrClear);
 }
 */
 
@@ -69,9 +64,8 @@ uint8_t main(void) {
 	DDRB = 0xFF;
 	DDRD = 0x7F;
 
-	// Start w/ a fresh new screen, and start debugging via serial
+	// Start w/ a fresh new screen
 	//clearScreen();
-	serOut_P(initDone);
 
 	// uuuh ... that's not pretty clean :$
 	while(1)
@@ -80,7 +74,6 @@ uint8_t main(void) {
 		_delay_ms(5000);
 
 		// Battery animation
-		serOut_P(writingP);
 		for(uint8_t x = 0; x < 15; x++) {
 			writePattern(bat_00, speed1);
 			writePattern(bat_20, speed1);
@@ -91,14 +84,12 @@ uint8_t main(void) {
 		}
 
 		// Space Invaders 1 animation
-		serOut_P(writingP);
 		for(uint8_t x = 0; x < 20; x++) {
 			writePattern(SI1_On, speed2);
 			writePattern(SI1_Off, speed2);
 		}
 
 		// Space Invaders 2 animation
-		serOut_P(writingP);
 		for(uint8_t x = 0; x < 20; x++) {
 			writePattern(SI2_On, speed2);
 			writePattern(SI2_Off, speed2);
@@ -106,17 +97,14 @@ uint8_t main(void) {
 
 		// Other stuff
 		/*
-		serOut_P(writingP);
 		for(uint8_t x = 0; x < 10; x++) {
 			writePattern(heart, speed2);
 		}
 
-		serOut_P(writingP);
 		for(uint8_t x = 0; x < 10; x++) {
 			writePattern(smile, speed2);
 		}
 
-		serOut_P(writingP);
 		for(uint8_t x = 0; x < 10; x++) {
 			writePattern(clock, speed2);
 		}
