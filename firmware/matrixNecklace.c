@@ -2,7 +2,7 @@
  *
  * Main program file
  *
- * Copyright 2015 - 2017 (C) Taz8du29
+ * Copyright 2015 - 2018 (C) Taz8du29
  * Refer to LICENSE.MD for more infos about copyright
 */
 

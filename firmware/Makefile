@@ -5,7 +5,7 @@
 # Peter Fleury, Tim Henigan, Colin O'Flynn, Reiner Patommel, Markus Pfaff,
 # Sander Pool, Frederik Rouleau, Carlos Lamas
 #
-# Improved by Taz8du29 (c) 2017
+# Improved by Taz8du29 (c) 2017-2018
 #
 #----------------------------------------------------------------------------
 
