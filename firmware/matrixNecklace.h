@@ -13,16 +13,14 @@
 
 /* DEPENDENCIES */
 
-// My small utility file
-#include <myUtils.h>
-
-// Functions who stores functions and data in flash.
+// Includes from avr-libc
 #include <avr/pgmspace.h>
+#include <util/delay.h>
 
 // Self Programing functions
 // #include <avr/boot.h>
 
-// My pattern file
+// Patterns file
 #include "patterns.h"
 
 
@@ -86,6 +84,10 @@
 /* FUNCTIONS */
 
 void writePattern(const uint8_t pat[8], uint8_t frames);
+// Set or Clear a bit
+#define sbi(reg, pos) (var |= (1<<pos))
+#define cbi(reg, pos) (reg &= ~(1<<pos))
+
 
 
 
