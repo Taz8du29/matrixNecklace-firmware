@@ -20,25 +20,6 @@
 
 /* MAIN FUNCTION DEFINITIONS */
 
-// Light all the matrix's LEDs
-void fillScreen(void) {
-	for(uint8_t i = 0; i < 8; i++) {
-		sbi(rows[i][0], rows[i][1]);
-		cbi(cols[i][0], cols[i][1]);
-	}
-	serOut_P(scrFilld);
-}
-
-// Shut off all the matrix's LEDs
-/*
-void clearScreen(void) {
-	for(uint8_t i = 0; i < 8; i++) {
-		cbi(rows[i][0], rows[i][1]);
-		sbi(cols[i][0], cols[i][1]);
-	}
-}
-*/
-
 // Write a specific number of times the desired pattern
 // TODO : improve timings efficiency (and power ?)
 void writePattern(const uint8_t pat[8], uint8_t frames) {
@@ -65,14 +46,12 @@ int main(void)
 	DDRB = 0xFF;
 	DDRD = 0x7F;
 
-	// Start w/ a fresh new screen
-	//clearScreen();
+	// Wait a bit
+	_delay_ms(5000);
 
 	// Infinite loop !!
 	while(1)
 	{
-		fillScreen();
-		_delay_ms(5000);
 
 		// Battery animation
 		for(uint8_t x = 0; x < 15; x++) {

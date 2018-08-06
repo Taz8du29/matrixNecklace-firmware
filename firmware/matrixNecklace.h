@@ -42,8 +42,6 @@ uint8_t cols[8][2] = {{PORTA,1}, {PORTA,0}, {PORTB,1}, {PORTD,3}, {PORTB,2}, {PO
 
 /* FUNCTIONS */
 
-void fillScreen(void);
-//void clearScreen(void);
 void writePattern(const uint8_t pat[8], uint8_t frames);
 
 
