@@ -88,9 +88,34 @@ int main(void)
 	// Wait a bit
 	_delay_ms(5000);
 
+	// counters
+	uint8_t cnt1 = 0; // Frame counter
+	uint8_t cnt2 = 0; // Pattern counter
+
 	// Infinite loop !!
 	while(1)
 	{
+		// When cnt1 arrives at 0, load next patern and increment cnt2
+		if (cnt1 == 0) {
+			switch (cnt2) {
+				case 0:	loadBuffer(bat_00); break;
+				case 1:	loadBuffer(bat_20); break;
+				case 2:	loadBuffer(bat_40); break;
+				case 3:	loadBuffer(bat_60); break;
+				case 4:	loadBuffer(bat_80); break;
+				case 5:	loadBuffer(bat_100); break;
+				case 6:	loadBuffer(SI1_On); break;
+				case 7:	loadBuffer(SI1_Off); break;
+			}
+
+			cnt2++;
+			if (cnt2 > 7) { cnt2 = 0; }
+		}
+
+		playPattern(speed1);
+
+		// Increment frame counter
+		cnt1++;
 
 		// Battery animation
 		/* for(uint8_t x = 0; x < 15; x++) {
