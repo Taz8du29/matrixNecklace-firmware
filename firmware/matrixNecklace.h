@@ -89,7 +89,7 @@ uint8_t framebuffer[8];
 /* FUNCTIONS */
 
 // Set or Clear a bit
-#define sbi(reg, pos) (var |= (1<<pos))
+#define sbi(reg, pos) (reg |= (1<<pos))
 #define cbi(reg, pos) (reg &= ~(1<<pos))
 
 // Prototypes
