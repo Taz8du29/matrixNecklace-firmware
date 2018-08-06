@@ -27,15 +27,15 @@ FORMAT = ihex
 TARGET = matrixNecklace
 
 # List source files here. (C/C++ dependencies are automatically generated.)
-CSRC =
-CPPSRC = matrixNecklace.cpp
+CSRC = matrixNecklace.c
+CPPSRC =
 ASRC =
 
 # Optimization level, can be [0, 1, 2, 3, s].
 OPT = s
 
 # List any extra directories to look for include files here.
-EXTRAINCDIRS = ../../myUtils
+EXTRAINCDIRS =
 
 
 # Programming hardware
