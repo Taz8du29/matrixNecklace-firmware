@@ -68,7 +68,7 @@ int main(void)
 	// Start w/ a fresh new screen
 	//clearScreen();
 
-	// uuuh ... that's not pretty clean :$
+	// Infinite loop !!
 	while(1)
 	{
 		fillScreen();
