@@ -69,7 +69,7 @@ void playPattern(uint16_t frames)
 			PORTD = 0x00;
 
 			// Delay OFF
-			_delay_ms(750);
+			_delay_us(750);
 		}
 	}
 }
