@@ -20,6 +20,13 @@
 
 /* MAIN FUNCTION DEFINITIONS */
 
+void loadBuffer(const uint8_t pat[8])
+{
+	for(uint8_t i = 0; i < 8; i++) {
+		framebuffer[i] = pgm_read_byte(pat[i]);
+	}
+}
+
 // Write a specific number of times the desired pattern
 // TODO : improve timings efficiency (and power ?)
 void writePattern(const uint8_t pat[8], uint8_t frames) {

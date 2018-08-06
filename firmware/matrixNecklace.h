@@ -79,6 +79,11 @@
 
 
 
+/* VARIABLES */
+
+// Init a frame buffer, in which we'll load patterns from PROGMEM
+uint8_t framebuffer[8];
+
 
 
 /* FUNCTIONS */
@@ -88,6 +93,8 @@ void writePattern(const uint8_t pat[8], uint8_t frames);
 #define sbi(reg, pos) (var |= (1<<pos))
 #define cbi(reg, pos) (reg &= ~(1<<pos))
 
+// Prototypes
+void loadBuffer(const uint8_t pat[8]);
 
 
 
