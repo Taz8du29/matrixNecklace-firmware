@@ -15,7 +15,7 @@
 #ifndef _MATRIXNECKLACE_C_
 #define _MATRIXNECKLACE_C_
 
-#include "template.h"
+#include "matrixNecklace.h"
 
 
 /* MAIN FUNCTION DEFINITIONS */
