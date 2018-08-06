@@ -29,15 +29,47 @@ void loadBuffer(const uint8_t pat[8])
 
 // Write a specific number of times the desired pattern
 // TODO : improve timings efficiency (and power ?)
-void writePattern(const uint8_t pat[8], uint8_t frames) {
-	for(uint8_t x = 0; x < frames; x++) {
+void playPattern(uint16_t frames)
+{
+	for(uint16_t x = 0; x < frames; x++) {
 		for(uint8_t i = 0; i < 8; i++) {
-			sbi(rows[i][0], rows[i][1]);
-			for(uint8_t j = 7; j >= 0; j--) {
-				if(readBit(pgm_read_byte(pat[i]), j)) { cbi(cols[j][0], cols[j][1]); }
-				sbi(cols[j][0], cols[j][1]);
+			// Set all pins HIGH
+			PORTA = 0x03;
+			PORTB = 0xFF;
+			PORTD = 0x7F;
+
+			// Enable the current row
+			switch (i) {
+				case 0:	cbi(ROW1_PORT, ROW1_PIN); break;
+				case 1:	cbi(ROW2_PORT, ROW2_PIN); break;
+				case 2:	cbi(ROW3_PORT, ROW3_PIN); break;
+				case 3:	cbi(ROW4_PORT, ROW4_PIN); break;
+				case 4:	cbi(ROW5_PORT, ROW5_PIN); break;
+				case 5:	cbi(ROW6_PORT, ROW6_PIN); break;
+				case 6:	cbi(ROW7_PORT, ROW7_PIN); break;
+				case 7:	cbi(ROW8_PORT, ROW8_PIN); break;
 			}
-			cbi(rows[i][0], rows[i][1]);
+
+			// Enable columns one by one
+			if (!(framebuffer[i] & 0x01)) { cbi(COL1_PORT, COL1_PIN); }
+			if (!(framebuffer[i] & 0x02)) { cbi(COL2_PORT, COL2_PIN); }
+			if (!(framebuffer[i] & 0x04)) { cbi(COL3_PORT, COL3_PIN); }
+			if (!(framebuffer[i] & 0x08)) { cbi(COL4_PORT, COL4_PIN); }
+			if (!(framebuffer[i] & 0x10)) { cbi(COL5_PORT, COL5_PIN); }
+			if (!(framebuffer[i] & 0x20)) { cbi(COL6_PORT, COL6_PIN); }
+			if (!(framebuffer[i] & 0x40)) { cbi(COL7_PORT, COL7_PIN); }
+			if (!(framebuffer[i] & 0x80)) { cbi(COL8_PORT, COL8_PIN); }
+
+			// Delay ON
+			_delay_us(250);
+
+			// Set all pins LOW
+			PORTA = 0x00;
+			PORTB = 0x00;
+			PORTD = 0x00;
+
+			// Delay OFF
+			_delay_ms(750);
 		}
 	}
 }

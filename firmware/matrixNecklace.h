@@ -88,13 +88,13 @@ uint8_t framebuffer[8];
 
 /* FUNCTIONS */
 
-void writePattern(const uint8_t pat[8], uint8_t frames);
 // Set or Clear a bit
 #define sbi(reg, pos) (var |= (1<<pos))
 #define cbi(reg, pos) (reg &= ~(1<<pos))
 
 // Prototypes
 void loadBuffer(const uint8_t pat[8]);
+void playPattern(uint16_t frames);
 
 
 
