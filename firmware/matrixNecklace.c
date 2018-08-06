@@ -93,26 +93,26 @@ int main(void)
 	{
 
 		// Battery animation
-		for(uint8_t x = 0; x < 15; x++) {
+		/* for(uint8_t x = 0; x < 15; x++) {
 			writePattern(bat_00, speed1);
 			writePattern(bat_20, speed1);
 			writePattern(bat_40, speed1);
 			writePattern(bat_60, speed1);
 			writePattern(bat_80, speed1);
 			writePattern(bat_100, speed1);
-		}
+		} */
 
 		// Space Invaders 1 animation
-		for(uint8_t x = 0; x < 20; x++) {
+		/* for(uint8_t x = 0; x < 20; x++) {
 			writePattern(SI1_On, speed2);
 			writePattern(SI1_Off, speed2);
-		}
+		} */
 
 		// Space Invaders 2 animation
-		for(uint8_t x = 0; x < 20; x++) {
+		/* for(uint8_t x = 0; x < 20; x++) {
 			writePattern(SI2_On, speed2);
 			writePattern(SI2_Off, speed2);
-		}
+		} */
 
 		// Other stuff
 		/*
