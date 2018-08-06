@@ -58,8 +58,9 @@ void writePattern(const uint8_t pat[8], uint8_t frames) {
 
 /* MAIN PROGRAM */
 
-uint8_t main(void) {
-	// Define direction register
+int main(void)
+{
+	// Define direction registers, all outputs
 	DDRA = 0x03;
 	DDRB = 0xFF;
 	DDRD = 0x7F;
