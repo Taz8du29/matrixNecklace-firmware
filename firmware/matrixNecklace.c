@@ -86,7 +86,7 @@ int main(void)
 	DDRD = 0x7F;
 
 	// Wait a bit
-	_delay_ms(5000);
+	_delay_ms(1000);
 
 	// counters
 	uint8_t cnt1 = 0; // Frame counter
