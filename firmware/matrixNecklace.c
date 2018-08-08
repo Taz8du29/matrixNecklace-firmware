@@ -59,16 +59,14 @@ void playPattern(uint16_t frames)
 			if (framebuffer[i] & 0x40) { sbi(COL7_PORT, COL7_PIN); }
 			if (framebuffer[i] & 0x80) { sbi(COL8_PORT, COL8_PIN); }
 
-			// Delay ON
-			_delay_us(250);
+			delay_ON();
 
 			// Set all pins LOW
 			PORTA = 0x00;
 			PORTB = 0x00;
 			PORTD = 0x00;
 
-			// Delay OFF
-			_delay_us(750);
+			delay_OFF();
 		}
 	}
 }

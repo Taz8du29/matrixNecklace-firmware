@@ -27,6 +27,9 @@
 
 /* CONSTANTS DEFINITIONS */
 
+// Brightness : 0 = always off / 255 = always on
+#define BRIGHTNESS 20
+
 // Uncomment this if the matrix is upside-down
 // #define invert_matrix 1
 
@@ -127,6 +130,11 @@ uint8_t framebuffer[8];
 // Set or Clear a bit
 #define sbi(reg, pos) (reg |= (1<<pos))
 #define cbi(reg, pos) (reg &= ~(1<<pos))
+
+// Delays
+#define delay_ON()  for (uint8_t d = 0; d < BRIGHTNESS; d++) { _delay_us(8); }
+#define delay_OFF() for (uint8_t d = 0; d < 255-BRIGHTNESS; d++) { _delay_us(8); }
+
 
 // Prototypes
 void loadBuffer(const uint8_t pat[8]);
