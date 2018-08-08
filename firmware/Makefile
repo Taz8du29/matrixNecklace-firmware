@@ -165,7 +165,7 @@ sizeafter:
 # Upload to the device.
 upload:
 	avrdude -p $(MCUPROG) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER) \
-	-U flash:w:.out/$(TARGET).hex -U eeprom:w:$(TARGET).eep
+	-U flash:w:.out/$(TARGET).hex -U eeprom:w:.out/$(TARGET).eep
 .PHONY : upload
 
 
