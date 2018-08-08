@@ -85,6 +85,11 @@ int main(void)
 	DDRB = 0xFF;
 	DDRD = 0x7F;
 
+	// Set all pins LOW
+	PORTA = 0x00;
+	PORTB = 0x00;
+	PORTD = 0x00;
+
 	// Wait a bit
 	_delay_ms(1000);
 
