@@ -23,7 +23,7 @@
 void loadBuffer(const uint8_t pat[8])
 {
 	for(uint8_t i = 0; i < 8; i++) {
-		framebuffer[i] = pgm_read_byte(pat[i]);
+		framebuffer[i] = pgm_read_byte(pat + i);
 	}
 }
 
