@@ -31,9 +31,45 @@
 // #define invert_matrix 1
 
 
-// Masks for pin registers
+/* Inverted pinout */
 #ifdef invert_matrix
-	// TODO: Make inverted pinout
+	/* === Rows === */
+	#define ROW1_PORT PORTB
+	#define ROW1_PIN  7
+	#define ROW2_PORT PORTB
+	#define ROW2_PIN  6
+	#define ROW3_PORT PORTB
+	#define ROW3_PIN  2
+	#define ROW4_PORT PORTD
+	#define ROW4_PIN  3
+	#define ROW5_PORT PORTB
+	#define ROW5_PIN  1
+	#define ROW6_PORT PORTA
+	#define ROW6_PIN  0
+	#define ROW7_PORT PORTA
+	#define ROW7_PIN  1
+	#define ROW8_PORT PORTB
+	#define ROW8_PIN  4
+
+	/* === Columns === */
+	#define COL1_PORT PORTB
+	#define COL1_PIN  0
+	#define COL2_PORT PORTB
+	#define COL2_PIN  5
+	#define COL3_PORT PORTD
+	#define COL3_PIN  5
+	#define COL4_PORT PORTB
+	#define COL4_PIN  3
+	#define COL5_PORT PORTD
+	#define COL5_PIN  0
+	#define COL6_PORT PORTD
+	#define COL6_PIN  4
+	#define COL7_PORT PORTD
+	#define COL7_PIN  1
+	#define COL8_PORT PORTD
+	#define COL8_PIN  2
+
+/* Normal pinout */
 #else
 	/* === Rows === */
 	#define ROW1_PORT PORTD // 0b00000100 // PD5
