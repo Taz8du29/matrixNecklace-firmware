@@ -33,32 +33,31 @@ void playPattern(uint16_t frames)
 {
 	for(uint16_t x = 0; x < frames; x++) {
 		for(uint8_t i = 0; i < 8; i++) {
-			// Set all pins HIGH
-			PORTA = 0x03;
-			PORTB = 0xFF;
-			PORTD = 0x7F;
+			// Set all pins LOW
+			PORTA = 0x00;
+			PORTB = 0x00;
+			PORTD = 0x00;
 
-			// Enable the current row
-			switch (i) {
-				case 0:	cbi(ROW1_PORT, ROW1_PIN); break;
-				case 1:	cbi(ROW2_PORT, ROW2_PIN); break;
-				case 2:	cbi(ROW3_PORT, ROW3_PIN); break;
-				case 3:	cbi(ROW4_PORT, ROW4_PIN); break;
-				case 4:	cbi(ROW5_PORT, ROW5_PIN); break;
-				case 5:	cbi(ROW6_PORT, ROW6_PIN); break;
-				case 6:	cbi(ROW7_PORT, ROW7_PIN); break;
-				case 7:	cbi(ROW8_PORT, ROW8_PIN); break;
-			}
+			// Set all the unwanted rows pins high, because rows are
+			// driven with low levels
+			if (i != 0) { sbi(ROW1_PORT, ROW1_PIN); }
+			if (i != 1) { sbi(ROW2_PORT, ROW2_PIN); }
+			if (i != 2) { sbi(ROW3_PORT, ROW3_PIN); }
+			if (i != 3) { sbi(ROW4_PORT, ROW4_PIN); }
+			if (i != 4) { sbi(ROW5_PORT, ROW5_PIN); }
+			if (i != 5) { sbi(ROW6_PORT, ROW6_PIN); }
+			if (i != 6) { sbi(ROW7_PORT, ROW7_PIN); }
+			if (i != 7) { sbi(ROW8_PORT, ROW8_PIN); }
 
 			// Enable columns one by one
-			if (!(framebuffer[i] & 0x01)) { cbi(COL1_PORT, COL1_PIN); }
-			if (!(framebuffer[i] & 0x02)) { cbi(COL2_PORT, COL2_PIN); }
-			if (!(framebuffer[i] & 0x04)) { cbi(COL3_PORT, COL3_PIN); }
-			if (!(framebuffer[i] & 0x08)) { cbi(COL4_PORT, COL4_PIN); }
-			if (!(framebuffer[i] & 0x10)) { cbi(COL5_PORT, COL5_PIN); }
-			if (!(framebuffer[i] & 0x20)) { cbi(COL6_PORT, COL6_PIN); }
-			if (!(framebuffer[i] & 0x40)) { cbi(COL7_PORT, COL7_PIN); }
-			if (!(framebuffer[i] & 0x80)) { cbi(COL8_PORT, COL8_PIN); }
+			if (framebuffer[i] & 0x01) { sbi(COL1_PORT, COL1_PIN); }
+			if (framebuffer[i] & 0x02) { sbi(COL2_PORT, COL2_PIN); }
+			if (framebuffer[i] & 0x04) { sbi(COL3_PORT, COL3_PIN); }
+			if (framebuffer[i] & 0x08) { sbi(COL4_PORT, COL4_PIN); }
+			if (framebuffer[i] & 0x10) { sbi(COL5_PORT, COL5_PIN); }
+			if (framebuffer[i] & 0x20) { sbi(COL6_PORT, COL6_PIN); }
+			if (framebuffer[i] & 0x40) { sbi(COL7_PORT, COL7_PIN); }
+			if (framebuffer[i] & 0x80) { sbi(COL8_PORT, COL8_PIN); }
 
 			// Delay ON
 			_delay_us(250);
