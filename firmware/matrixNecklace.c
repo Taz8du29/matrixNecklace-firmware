@@ -87,6 +87,13 @@ int main(void)
 	PORTB = 0x00;
 	PORTD = 0x00;
 
+	// Disable all power hungry systems, like timers and comparator
+	PRR = 0xFF;
+	sbi(ACSR, ACD);
+
+	// Disable all interrupts (clear I flag)
+	asm("cli");
+
 	// Wait a bit
 	_delay_ms(1000);
 
