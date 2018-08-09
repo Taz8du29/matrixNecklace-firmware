@@ -113,8 +113,8 @@
 
 
 // Frames speed
-#define speed1 ((uint16_t) 700)
-#define speed2 ((uint16_t) 1000)
+#define speed1 ((uint16_t) 100)
+#define speed2 ((uint16_t) 250)
 
 
 
@@ -130,11 +130,6 @@ uint8_t framebuffer[8];
 // Set or Clear a bit
 #define sbi(reg, pos) (reg |= (1<<pos))
 #define cbi(reg, pos) (reg &= ~(1<<pos))
-
-// Delays
-#define delay_ON()  for (uint8_t d = 0; d < BRIGHTNESS; d++) { _delay_us(8); }
-#define delay_OFF() for (uint8_t d = 0; d < 255-BRIGHTNESS; d++) { _delay_us(8); }
-
 
 // Prototypes
 void loadBuffer(const uint8_t pat[8]);

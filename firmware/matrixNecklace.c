@@ -31,6 +31,9 @@ void loadBuffer(const uint8_t pat[8])
 // TODO : improve timings efficiency (and power ?)
 void playPattern(uint16_t frames)
 {
+	// Delay counter
+	uint8_t delay = 0;
+
 	for(uint16_t x = 0; x < frames; x++) {
 		for(uint8_t i = 0; i < 8; i++) {
 			// Set all pins LOW
@@ -59,14 +62,18 @@ void playPattern(uint16_t frames)
 			if (framebuffer[i] & 0x40) { sbi(COL7_PORT, COL7_PIN); }
 			if (framebuffer[i] & 0x80) { sbi(COL8_PORT, COL8_PIN); }
 
-			delay_ON();
+			// Delay ON
+			delay = BRIGHTNESS;
+			while (delay > 0) { _delay_us(32); delay--; }
 
 			// Set all pins LOW
 			PORTA = 0x00;
 			PORTB = 0x00;
 			PORTD = 0x00;
 
-			delay_OFF();
+			// Delay OFF
+			delay = (255-BRIGHTNESS);
+			while (delay > 0) { _delay_us(32); delay--; }
 		}
 	}
 }
