@@ -100,71 +100,43 @@ int main(void)
 	// Wait a bit
 	_delay_ms(1000);
 
-	// counters
-	uint8_t cnt1 = 0; // Frame counter
-	uint8_t cnt2 = 0; // Pattern counter
-
 	// Infinite loop !!
 	while(1)
 	{
-		// When cnt1 arrives at 0, load next patern and increment cnt2
-		if (cnt1 == 0) {
-			switch (cnt2) {
-				case 0:	loadBuffer(bat_00); break;
-				case 1:	loadBuffer(bat_20); break;
-				case 2:	loadBuffer(bat_40); break;
-				case 3:	loadBuffer(bat_60); break;
-				case 4:	loadBuffer(bat_80); break;
-				case 5:	loadBuffer(bat_100); break;
-				case 6:	loadBuffer(SI1_On); break;
-				case 7:	loadBuffer(SI1_Off); break;
-			}
-
-			cnt2++;
-			if (cnt2 > 7) { cnt2 = 0; }
-		}
-
-		playPattern(speed1);
-
-		// Increment frame counter
-		cnt1++;
-
 		// Battery animation
-		/* for(uint8_t x = 0; x < 15; x++) {
-			writePattern(bat_00, speed1);
-			writePattern(bat_20, speed1);
-			writePattern(bat_40, speed1);
-			writePattern(bat_60, speed1);
-			writePattern(bat_80, speed1);
-			writePattern(bat_100, speed1);
-		} */
+		for(uint8_t x = 0; x < 15; x++) {
+			loadBuffer(bat_00); playPattern(speed1);
+			loadBuffer(bat_20); playPattern(speed1);
+			loadBuffer(bat_40); playPattern(speed1);
+			loadBuffer(bat_60); playPattern(speed1);
+			loadBuffer(bat_80); playPattern(speed1);
+			loadBuffer(bat_100); playPattern(speed1);
+		}
 
 		// Space Invaders 1 animation
-		/* for(uint8_t x = 0; x < 20; x++) {
-			writePattern(SI1_On, speed2);
-			writePattern(SI1_Off, speed2);
-		} */
+		for(uint8_t x = 0; x < 20; x++) {
+			loadBuffer(SI1_On); playPattern(speed2);
+			loadBuffer(SI1_Off); playPattern(speed2);
+		}
 
 		// Space Invaders 2 animation
-		/* for(uint8_t x = 0; x < 20; x++) {
-			writePattern(SI2_On, speed2);
-			writePattern(SI2_Off, speed2);
-		} */
+		for(uint8_t x = 0; x < 20; x++) {
+			loadBuffer(SI2_On); playPattern(speed2);
+			loadBuffer(SI2_Off); playPattern(speed2);
+		}
 
 		// Other stuff
-		/*
 		for(uint8_t x = 0; x < 10; x++) {
-			writePattern(heart, speed2);
+			loadBuffer(heart); playPattern(speed2);
 		}
 
 		for(uint8_t x = 0; x < 10; x++) {
-			writePattern(smile, speed2);
+			loadBuffer(smile); playPattern(speed2);
 		}
 
 		for(uint8_t x = 0; x < 10; x++) {
-			writePattern(clock, speed2);
+			loadBuffer(clock); playPattern(speed2);
 		}
-		*/
 	}
 }
 
