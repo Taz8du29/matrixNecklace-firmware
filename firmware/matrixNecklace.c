@@ -94,6 +94,9 @@ int main(void)
 	// Disable all interrupts (clear I flag)
 	asm("cli");
 
+	// Set clock prescaler
+	CLKPR = 0x80; CLKPR = 0x00;
+
 	// Wait a bit
 	_delay_ms(1000);
 
